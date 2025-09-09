@@ -269,7 +269,7 @@ We try to make projects as secure as possible.
 We use a lot of 3rd party tools to achieve that.</p>
 <section id="django">
 <h2>Django<a class="headerlink" href="#django" title="Link to this heading">¶</a></h2>
-<p>Django has a lot of <a class="reference external" href="https://docs.djangoproject.com/en/4.2/topics/security/">security-specific settings</a>
+<p>Django has a lot of <a class="reference external" href="https://docs.djangoproject.com/en/5.2/topics/security/">security-specific settings</a>
 that are all turned on by default in this template.</p>
 <p>We also <a class="reference internal" href="production-checklist.html#going-to-production"><span class="std std-ref">enforce</span></a> all the best practices
 by running <code class="docutils literal notranslate"><span class="pre">django</span></code> checks inside CI for each commit.</p>
@@ -278,7 +278,6 @@ to enforce even more security rules:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/jazzband/django-axes">django-axes</a> to track and ban repeating access requests</p></li>
 <li><p><a class="reference external" href="https://github.com/mozilla/django-csp">django-csp</a> to enforce <a class="reference external" href="https://www.w3.org/TR/CSP/">Content-Security Policy</a> for our webpages</p></li>
-<li><p><a class="reference external" href="https://django-referrer-policy.readthedocs.io">django-http-referrer-policy</a> to enforce <a class="reference external" href="https://www.w3.org/TR/referrer-policy/">Referrer Policy</a> for our webpages</p></li>
 </ul>
 <p>And there are also some awesome extensions that are not included:</p>
 <ul class="simple">
@@ -308,19 +307,16 @@ for our main template repository.</p>
 </section>
 <section id="static-analysis">
 <h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading">¶</a></h2>
-<p>We use <code class="docutils literal notranslate"><span class="pre">wemake-python-styleguide</span></code> which
-includes <a class="reference external" href="https://pypi.org/project/bandit/">bandit</a> security checks inside.</p>
-<p>You can also install <a class="reference external" href="https://pyt.readthedocs.io">pyt</a>
-which is not included by default.
-It will include even more static checks for
-<code class="docutils literal notranslate"><span class="pre">sql</span></code> injections, <code class="docutils literal notranslate"><span class="pre">xss</span></code> and others.</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">wemake-python-styleguide</span></code> which has multiple security-based rules.
+And <code class="docutils literal notranslate"><span class="pre">ruff</span></code> which includes <a class="reference external" href="https://pypi.org/project/bandit/">bandit</a>
+with security checks inside.</p>
 </section>
 <section id="dynamic-analysis">
 <h2>Dynamic analysis<a class="headerlink" href="#dynamic-analysis" title="Link to this heading">¶</a></h2>
 <p>You can monitor your running application to detect anomalous activities.
 Tools to consider:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eliasgranderubio/dagda">dagda</a> - a tool to perform static analysis of known vulnerabilities, trojans, viruses, malware &amp; other malicious threats in docker images/containers and to monitor the docker daemon and running docker containers for detecting anomalous activities</p></li>
+<li><p><a class="reference external" href="https://github.com/quay/clair">clair</a> - a tool to perform static analysis of known vulnerabilities, trojans, viruses, malware &amp; other malicious threats in docker images/containers and to monitor the docker daemon and running docker containers for detecting anomalous activities</p></li>
 </ul>
 <p>All the tools above are not included into this template.
 You have to install them by yourself.</p>
